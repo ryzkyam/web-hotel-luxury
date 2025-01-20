@@ -1,9 +1,8 @@
-import assetheader from "../asset/p.jpg";
-import Hotel from "./Hotel";
-import React from "react";
-import HeaderUserProfil from "../components/HeaderUserProfil";
+// import assetheader from "../asset/p.jpg";
+import Hotel from "./Hotel.jsx";
+// import HeaderUserProfil from "../components/HeaderUserProfil.jsx";
 import logo from "../asset/logo4.png";
-import Profil from "./Profil";
+// import Profil from "./Profil.jsx";
 function Dashboard() {
   return (
     <div>
@@ -92,7 +91,9 @@ function Dashboard() {
             </button>
           </div>
         </div>
-        <Hotel />
+        <div>
+          <Hotel />
+        </div>
       </div>
     </div>
   );

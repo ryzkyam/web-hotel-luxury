@@ -1,4 +1,3 @@
-import React from "react";
 import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -13,14 +12,36 @@ import Hotel from "./pages/Hotel";
 import Train from "./pages/Train";
 import Travel from "./pages/Travel";
 import Flights from "./pages/Flights";
-import loginUser from "./pages/loginUser";
+import Login from "./pages/loginUser";
 import contact from "./pages/contact";
 import HotelReviewForm from "./pages/HotelReviewForm";
 import Dashboard from "./pages/Dashboard";
-import Login from "./pages/Login";
+// import Login from "./pages/Login";
 import Profil from "./pages/Profil";
 import Booking from "./pages/Booking";
+import { useEffect, useState } from "react";
+
 function App() {
+  const [apiData, setApiData] = useState(null); // State to store fetched data
+  const [loading, setLoading] = useState(true); // Loading state
+
+  useEffect(() => {
+    // Fetching data from the backend API
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/"); // Replace with your actual endpoint
+        const data = await response.json();
+        setApiData(data); // Storing the fetched data
+        setLoading(false); // Setting loading to false after data is fetched
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false); // Stop loading on error
+      }
+    };
+
+    fetchData();
+  }, []); // Empty dependency array ensures this runs only once on mount
+
   return (
     <div>
       <Routes>
@@ -29,7 +50,7 @@ function App() {
           element={
             <>
               <Header />
-              <Home />
+              <Home apiData={apiData} loading={loading} />
             </>
           }
         />
@@ -38,7 +59,7 @@ function App() {
         <Route path="/Main" Component={PromoPage} />
         <Route path="/Mainsec" Component={MainSecond} />
         <Route path="/FormBook" Component={FormBooking} />
-        <Route path="/LoginPage" Component={loginUser} />
+        <Route path="/LoginPage" Component={Login} />
         <Route
           path="/detailvila"
           element={
@@ -62,8 +83,8 @@ function App() {
         <Route path="/detailFlights" Component={Flights} />
         <Route path="contact" Component={contact} />
         <Route path="formreview" Component={HotelReviewForm} />
-        <Route path="Login" Component={Login} />
-        <Route path="Dashboard" Component={Dashboard} />
+
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="Profil" Component={Profil} />
         <Route path="Booking" Component={Booking} />
       </Routes>

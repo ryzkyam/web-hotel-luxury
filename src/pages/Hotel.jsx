@@ -1,27 +1,40 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
 const hotels = [
   {
-    name: 'Grand Resort Hotel',
-    location: 'Bali',
-    price: 'Rp.2.500.000',
-    imageUrl: 'https://tse3.mm.bing.net/th/id/OIP.LnRFVxB9JoLQDL2PO323WwHaFj?pid=ImgDet&w=182&h=136&c=7&dpr=1,1',
-    description: 'Grand Resort Hotel provides a blend of comfort and style with breathtaking beachfront views and world-class facilities.',
-    facilities: ['Beachfront', 'Swimming Pool', 'Free Wi-Fi', 'Fine Dining'],
+    name: "Grand Resort Hotel",
+    location: "Bali",
+    price: "Rp.2.500.000",
+    imageUrl:
+      "https://tse3.mm.bing.net/th/id/OIP.LnRFVxB9JoLQDL2PO323WwHaFj?pid=ImgDet&w=182&h=136&c=7&dpr=1,1",
+    description:
+      "Grand Resort Hotel provides a blend of comfort and style with breathtaking beachfront views and world-class facilities.",
+    facilities: ["Beachfront", "Swimming Pool", "Free Wi-Fi", "Fine Dining"],
   },
   {
-    name: 'Mountain View Hotel',
-    location: 'Bandung',
-    price: 'Rp.1.200.000',
-    imageUrl: 'https://tse4.mm.bing.net/th/id/OIP.q01MRN5N3TFNFQFKGl2yugHaE8?w=273&h=182&c=7&r=0&o=5&dpr=1.1&pid=1.7',
-    description: 'Mountain View Hotel offers a serene retreat surrounded by nature, with cozy rooms and access to hiking trails.',
-    facilities: ['Mountain Views', 'Restaurant', 'Free Parking', 'Fitness Center'],
+    name: "Mountain View Hotel",
+    location: "Bandung",
+    price: "Rp.1.200.000",
+    imageUrl:
+      "https://tse4.mm.bing.net/th/id/OIP.q01MRN5N3TFNFQFKGl2yugHaE8?w=273&h=182&c=7&r=0&o=5&dpr=1.1&pid=1.7",
+    description:
+      "Mountain View Hotel offers a serene retreat surrounded by nature, with cozy rooms and access to hiking trails.",
+    facilities: [
+      "Mountain Views",
+      "Restaurant",
+      "Free Parking",
+      "Fitness Center",
+    ],
   },
 ];
 
 const HotelCard = ({ hotel, onBookNow }) => (
   <div className="bg-white rounded-lg shadow-lg p-4 m-4 w-full md:w-1/3 lg:w-1/4">
-    <img src={hotel.imageUrl} alt={hotel.name} className="w-full h-48 object-cover rounded-t-lg" />
+    <img
+      src={hotel.imageUrl}
+      alt={hotel.name}
+      className="w-full h-48 object-cover rounded-t-lg"
+    />
     <div className="p-4">
       <h3 className="text-xl font-bold">{hotel.name}</h3>
       <p className="text-gray-500">{hotel.location}</p>
